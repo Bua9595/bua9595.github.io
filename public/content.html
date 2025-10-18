@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Florian Bujupi | Technischer Assistent für Informatik</title>
+
+    <!-- SEO & Meta Tags -->
+    <meta name='description' content='Persönliche Website von Florian Bujupi. Technischer Assistent für Informatik (Abschluss 2025) mit über 8 Jahren Erfahrung in Lager & Logistik.'>
+    <meta name='author' content='Florian Bujupi'>
+    <meta name='keywords' content='Florian Bujupi, Blockchain Developer, Systems Engineer, Web3, React, Node.js, Solana, Acurast, Portfolio'>
+    <meta property='og:title' content='Florian Bujupi | Technischer Assistent für Informatik'>
+    <meta property='og:description' content='Über 8 Jahre Lager/Logistik, Ausbildung TAI (GBS Sabel München, 2023–2025), praxisnahe IT‑Grundlagen.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://bujupi.dev'>
+    <meta property='og:image' content='https://abh.ai/landscapes/1200/630'>
+    <meta name='twitter:card' content='summary_large_image'>
+    
+    <!-- Google Fonts -->
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' rel='stylesheet'>
+
+    <style>
+        :root {
+            --bg-color: #05080D;
+            --surface-color: #0E1018;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --primary-color: #00A3FF;
+            --secondary-color: #7A45FF;
+            --text-color: #E0E0E0;
+            --text-secondary-color: #8892B0;
+            --font-family: 'Poppins', sans-serif;
+            --gradient: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+             scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--surface-color);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* === Background Animation === */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* === Layout & Containers === */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 2rem;
+            width: 100%;
+        }
+
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* === Typography === */
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        p {
+            color: var(--text-secondary-color);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* === Scroll Reveal Animation === */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === Header === */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 1.5rem 2rem;
+            z-index: 100;
+            background: rgba(5, 8, 13, 0.5);
+            backdrop-filter: blur(10px);
+            transition: top 0.3s;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .main-nav ul li {
+            margin-left: 2rem;
+        }
+
+        .main-nav ul li a {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        /* === Hero Section === */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            border-bottom: none;
+        }
+
+        #hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #hero h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        #hero .subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--text-secondary-color);
+            margin-bottom: 1.5rem;
+            height: 2rem;
+        }
+        
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.25rem;
+            background: var(--primary-color);
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        #hero .intro {
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border: 1px solid var(--primary-color);
+            border-radius: 50px;
+            font-weight: 600;
+            background: transparent;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px rgba(0, 163, 255, 0.5);
+        }
+
+        /* === Projects Section === */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .project-card p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stack-tag {
+            background-color: rgba(0, 163, 255, 0.1);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .project-links a {
+            margin-right: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .project-links a svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+            fill: currentColor;
+        }
+
+        /* === Skills Section === */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+              display: flex;
+            align-items: center;
+             border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-item p {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--surface-color);
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-bar-inner {
+            height: 100%;
+            background: var(--gradient);
+            width: 0;
+            border-radius: 4px;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .is-visible .progress-bar-inner {
+            width: var(--skill-level, 0%);
+        }
+
+        /* === Experience Section === */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-image: var(--gradient);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item.left {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--bg-color);
+            border: 3px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.left::after {
+            right: -10px;
+        }
+
+        .timeline-item.right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: var(--surface-color);
+            position: relative;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        .timeline-content .date {
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: var(--text-secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* === Contact Section === */
+        #contact .container {
+            text-align: center;
+        }
+
+        #contact p {
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .contact-links a {
+            color: var(--text-secondary-color);
+            transition: all 0.3s ease-out;
+        }
+
+        .contact-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .contact-links svg {
+            width: 32px;
+            height: 32px;
+        }
+        
+        /* === Footer === */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary-color);
+        }
+
+        /* === Responsive Design === */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .main-header {
+                justify-content: center;
+            }
+
+            .main-nav ul li {
+                margin: 0 1rem;
+            }
+
+            #hero .subtitle {
+                font-size: 1rem;
+                height: 1.5rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item.left, .timeline-item.right {
+                left: 0%;
+                text-align: left;
+            }
+
+            .timeline-item.left::after, .timeline-item.right::after {
+                left: 21px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <canvas id='particle-canvas'></canvas>
+
+    <header class='main-header'>
+        <nav class='main-nav'>
+            <ul>
+                <li><a href='#projects'>Projects</a></li>
+                <li><a href='#skills'>Skills</a></li>
+                <li><a href='#experience'>Experience</a></li>
+                <li><a href='#contact'>Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id='hero'>
+            <div class='container reveal-on-scroll is-visible'>
+                <h1>Florian Bujupi</h1>
+                <p class='subtitle'>
+                    <span id='typing-effect'></span>
+                    <span class='typing-cursor'></span>
+                </p>
+                <p class='intro'>Technischer Assistent für Informatik (Abschluss 08/2025) mit Schwerpunkt IT‑Grundlagen, sowie über 8 Jahre Erfahrung in Lager/Logistik (Wareneingang/‑ausgang, Kommissionierung, SAP‑Grundlagen, Milkrun, Gefahrgut, Staplerschein Klasse L).</p>
+                <a href='#experience' class='cta-button'>Lebenslauf ansehen</a>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id='projects' class='reveal-on-scroll'>
+            <div class='container'>
+                <h2>Projekte</h2>
+                <div class='projects-grid'>
+                    <!-- Project 1 -->
+                    <article class='project-card'>
+                        <img src='https://abh.ai/things/640/360' alt='Crypto Sweeper Game'>
+                        <div class='project-card-content'>
+                            <h3>Crypto Sweeper (Game)</h3>
+                            <p>Ein einfaches webbasiertes Spielkonzept zur Demonstration von UI/Logik und Grundfunktionen.</p>
+                            <div class='project-stack'>
+                                <span class='stack-tag'>HTML/CSS</span>
+                                <span class='stack-tag'>React</span>
+                                <span class='stack-tag'>Web3.js</span>
+                            </div>
+                            <div class='project-links'>
+                                <a href='#' target='_blank' rel='noopener noreferrer'>
+                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5859 13.4142L18.0002 6.00001V10H20.0002V3H13.0002V5H17.5859L10.5859 11.9999L10.5859 13.4142Z"/><path d="M12.0002 18.0001V20.0001H4.00016C3.44788 20.0001 3.00016 19.5524 3.00016 19.0001V5.00006C3.00016 4.44778 3.44788 4.00006 4.00016 4.00006H11.0002V6.00006H5.00016V18.0001H12.0002Z"/></svg>
+                                    Live Demo
+                                </a>
+                                <a href='#' target='_blank' rel='noopener noreferrer'>
+                                    <svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>GitHub</title><path d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/></svg>
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                     <!-- Project 2 -->
+                     <article class='project-card'>
+                        <img src='https://abh.ai/random/640/360' alt='Blockchain Visualizer'>
+                        <div class='project-card-content'>
+                            <h3>Blockchain Visualizer</h3>
+                            <p>A multi-chain transaction graph tool inspired by Bubblemaps and Etherscan, creating visual representations of complex on-chain data flows.</p>
+                            <div class='project-stack'>
+                                <span class='stack-tag'>D3.js</span>
+                                <span class='stack-tag'>Node.js</span>
+                                <span class='stack-tag'>Etherscan API</span>
+                            </div>
+                            <div class='project-links'>
+                                <a href='#' target='_blank' rel='noopener noreferrer'>
+                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5859 13.4142L18.0002 6.00001V10H20.0002V3H13.0002V5H17.5859L10.5859 11.9999L10.5859 13.4142Z"/><path d="M12.0002 18.0001V20.0001H4.00016C3.44788 20.0001 3.00016 19.5524 3.00016 19.0001V5.00006C3.00016 4.44778 3.44788 4.00006 4.00016 4.00006H11.0002V6.00006H5.00016V18.0001H12.0002Z"/></svg>
+                                    Live Demo
+                                </a>
+                                <a href='#' target='_blank' rel='noopener noreferrer'>
+                                    <svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>GitHub</title><path d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/></svg>
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                     <!-- Project 3 -->
+                     <article class='project-card'>
+                        <img src='https://abh.ai/nature/640/360' alt='Myriad Markets Strategy'>
+                        <div class='project-card-content'>
+                            <h3>Myriad Markets Strategy</h3>
+                            <p>A predictive analytics dashboard for token odds and ROI management, utilizing data models to forecast market movements.</p>
+                            <div class='project-stack'>
+                                <span class='stack-tag'>Python</span>
+                                <span class='stack-tag'>Pandas</span>
+                                <span class='stack-tag'>React</span>
+                            </div>
+                            <div class='project-links'>
+                                <a href='#' target='_blank' rel='noopener noreferrer'>
+                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5859 13.4142L18.0002 6.00001V10H20.0002V3H13.0002V5H17.5859L10.5859 11.9999L10.5859 13.4142Z"/><path d="M12.0002 18.0001V20.0001H4.00016C3.44788 20.0001 3.00016 19.5524 3.00016 19.0001V5.00006C3.00016 4.44778 3.44788 4.00006 4.00016 4.00006H11.0002V6.00006H5.00016V18.0001H12.0002Z"/></svg>
+                                    Live Demo
+                                </a>
+                                <a href='#' target='_blank' rel='noopener noreferrer'>
+                                    <svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>GitHub</title><path d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/></svg>
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                     <!-- Project 4 -->
+                     <article class='project-card'>
+                        <img src='https://abh.ai/beaches/640/360' alt='$HELP Ecosystem'>
+                        <div class='project-card-content'>
+                            <h3>$HELP Ecosystem</h3>
+                            <p>A social-impact token system on Solana with gamified incentives for real-world good, fostering a community-driven charity platform.</p>
+                            <div class='project-stack'>
+                                <span class='stack-tag'>Solana</span>
+                                <span class='stack-tag'>Rust</span>
+                                <span class='stack-tag'>Next.js</span>
+                            </div>
+                            <div class='project-links'>
+                                <a href='#' target='_blank' rel='noopener noreferrer'>
+                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5859 13.4142L18.0002 6.00001V10H20.0002V3H13.0002V5H17.5859L10.5859 11.9999L10.5859 13.4142Z"/><path d="M12.0002 18.0001V20.0001H4.00016C3.44788 20.0001 3.00016 19.5524 3.00016 19.0001V5.00006C3.00016 4.44778 3.44788 4.00006 4.00016 4.00006H11.0002V6.00006H5.00016V18.0001H12.0002Z"/></svg>
+                                    Live Demo
+                                </a>
+                                <a href='#' target='_blank' rel='noopener noreferrer'>
+                                    <svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>GitHub</title><path d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/></svg>
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id='skills' class='reveal-on-scroll'>
+            <div class='container'>
+                <h2>Skills & Stack</h2>
+                <div class='skills-grid'>
+                    <!-- Frontend -->
+                    <div class='skill-category'>
+                        <h3>Frontend</h3>
+                        <div class='skill-item'><p><span>HTML / CSS</span><span>75%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 75%;'></div></div></div>
+                        <div class='skill-item'><p><span>JavaScript (ES6+)</span><span>70%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 70%;'></div></div></div>
+                        <div class='skill-item'><p><span>React / Next.js</span><span>65%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 65%;'></div></div></div>
+                        <div class='skill-item'><p><span>TypeScript</span><span>60%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 60%;'></div></div></div>
+                        <div class='skill-item'><p><span>D3.js / Visualization</span><span>50%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 50%;'></div></div></div>
+                    </div>
+
+                    <!-- Backend -->
+                    <div class='skill-category'>
+                        <h3>Backend</h3>
+                        <div class='skill-item'><p><span>Node.js / Express</span><span>65%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 65%;'></div></div></div>
+                        <div class='skill-item'><p><span>Python (Flask, Pandas)</span><span>60%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 60%;'></div></div></div>
+                        <div class='skill-item'><p><span>Databases (SQL / NoSQL)</span><span>55%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 55%;'></div></div></div>
+                        <div class='skill-item'><p><span>REST APIs</span><span>65%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 65%;'></div></div></div>
+                    </div>
+
+                    <!-- Blockchain -->
+                    <div class='skill-category'>
+                        <h3>Blockchain</h3>
+                        <div class='skill-item'><p><span>Web3.js / Ethers.js</span><span>60%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 60%;'></div></div></div>
+                        <div class='skill-item'><p><span>Solidity / EVM</span><span>55%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 55%;'></div></div></div>
+                        <div class='skill-item'><p><span>Rust / Solana (Basics)</span><span>40%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 40%;'></div></div></div>
+                        <div class='skill-item'><p><span>Wallet Integration</span><span>60%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 60%;'></div></div></div>
+                    </div>
+
+                    <!-- Systems & Tools -->
+                    <div class='skill-category'>
+                        <h3>Systems & Tools</h3>
+                        <div class='skill-item'><p><span>Windows / Linux Basics</span><span>60%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 60%;'></div></div></div>
+                        <div class='skill-item'><p><span>Networking Basics</span><span>50%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 50%;'></div></div></div>
+                        <div class='skill-item'><p><span>Docker / CI/CD</span><span>45%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 45%;'></div></div></div>
+                        <div class='skill-item'><p><span>Git & Version Control</span><span>80%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 80%;'></div></div></div>
+                    </div>
+
+                    <!-- Logistics & Operations (secondary) -->
+                    <div class='skill-category'>
+                        <h3>Logistics & Operations</h3>
+                        <div class='skill-item'><p><span>Warehouse Ops (Inbound/Outbound, Picking)</span><span>85%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 85%;'></div></div></div>
+                        <div class='skill-item'><p><span>Inventory & Stock Control</span><span>80%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 80%;'></div></div></div>
+                        <div class='skill-item'><p><span>SAP (MM/WM Basics)</span><span>70%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 70%;'></div></div></div>
+                        <div class='skill-item'><p><span>Forklift (Klasse L) & Safety</span><span>85%</span></p><div class='progress-bar'><div class='progress-bar-inner' style='--skill-level: 85%;'></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id='experience' class='reveal-on-scroll'>
+            <div class='container'>
+                <h2>Experience & Education</h2>
+                <div class='timeline'>
+                    <!-- Most recent: Private builder -->
+                    <div class='timeline-item left reveal-on-scroll'>
+                        <div class='timeline-content'>
+                            <h3>Independent Builder (Web3 & IT)</h3>
+                            <p class='date'>Present</p>
+                            <p>Building products and prototypes privately — web apps, data tooling and blockchain experiments (Solana/EVM) — to sharpen skills and ship useful things.</p>
+                        </div>
+                    </div>
+                    <!-- Education next -->
+                    <div class='timeline-item right reveal-on-scroll'>
+                        <div class='timeline-content'>
+                            <h3>State-Certified Technical Assistant for Informatics</h3>
+                            <p class='date'>Germany</p>
+                            <p>Completed intensive training in software development, system administration, and network engineering, laying the foundation for a career in technology.</p>
+                        </div>
+                    </div>
+                    <!-- Oldest: Logistics at the bottom -->
+                    <div class='timeline-item left reveal-on-scroll'>
+                        <div class='timeline-content'>
+                            <h3>Production & Logistics (SAP)</h3>
+                            <p class='date'>Germany</p>
+                            <p>Managed logistics workflows and data within SAP environments, optimizing supply chain processes and gaining deep insights into enterprise systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id='contact' class='reveal-on-scroll'>
+            <div class='container'>
+                <h2>Get In Touch</h2>
+                <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out.</p>
+                <div class='contact-links'>
+                    <a href='mailto:hello@bujupi.dev' title='Email'>
+                         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 4.238l-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z'/></svg>
+                    </a>
+                    <a href='#' target='_blank' rel='noopener noreferrer' title='GitHub'>
+                        <svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>GitHub</title><path d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/></svg>
+                    </a>
+                    <a href='#' target='_blank' rel='noopener noreferrer' title='LinkedIn'>
+                         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z'/></svg>
+                    </a>
+                    <a href='#' target='_blank' rel='noopener noreferrer' title='X (Twitter)'>
+                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='m18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z'/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Built by Florian Bujupi | © 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Particle Background Animation ---
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let particlesArray;
+
+            class Particle {
+                constructor(x, y, directionX, directionY, size, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.directionX = directionX;
+                    this.directionY = directionY;
+                    this.size = size;
+                    this.color = color;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                    ctx.fillStyle = 'rgba(0, 163, 255, 0.5)';
+                    ctx.fill();
+                }
+                update() {
+                    if (this.x > canvas.width || this.x < 0) {
+                        this.directionX = -this.directionX;
+                    }
+                    if (this.y > canvas.height || this.y < 0) {
+                        this.directionY = -this.directionY;
+                    }
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+                    this.draw();
+                }
+            }
+
+            function init() {
+                particlesArray = [];
+                let numberOfParticles = (canvas.height * canvas.width) / 9000;
+                for (let i = 0; i < numberOfParticles; i++) {
+                    let size = (Math.random() * 1.5) + 1;
+                    let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                    let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                    let directionX = (Math.random() * .4) - .2;
+                    let directionY = (Math.random() * .4) - .2;
+                    let color = 'rgba(0, 163, 255, 0.5)';
+                    particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+                }
+            }
+
+            function connect() {
+                let opacityValue = 1;
+                for (let a = 0; a < particlesArray.length; a++) {
+                    for (let b = a; b < particlesArray.length; b++) {
+                        let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
+                            ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                        if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                           opacityValue = 1 - (distance/20000);
+                           ctx.strokeStyle = `rgba(122, 69, 255, ${opacityValue})`;
+                           ctx.lineWidth = 0.5;
+                           ctx.beginPath();
+                           ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                           ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                           ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                ctx.clearRect(0, 0, innerWidth, innerHeight);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                }
+                connect();
+            }
+
+            window.addEventListener('resize', () => {
+                canvas.width = innerWidth;
+                canvas.height = innerHeight;
+                init();
+            });
+
+            init();
+            animate();
+
+            // --- Typing Effect ---
+            const typingElement = document.getElementById('typing-effect');
+            const titles = ['IT Specialist', 'Blockchain Engineer', 'Systems Engineer'];
+            let titleIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentTitle = titles[titleIndex];
+                if (isDeleting) {
+                    typingElement.textContent = currentTitle.substring(0, charIndex--);
+                } else {
+                    typingElement.textContent = currentTitle.substring(0, charIndex++);
+                }
+
+                let typeSpeed = isDeleting ? 75 : 150;
+
+                if (!isDeleting && charIndex === currentTitle.length) {
+                    typeSpeed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    titleIndex = (titleIndex + 1) % titles.length;
+                    typeSpeed = 500;
+                }
+
+                setTimeout(type, typeSpeed);
+            }
+            type();
+
+            // --- Scroll-triggered Animations ---
+            const scrollObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -100px 0px' });
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+                scrollObserver.observe(el);
+            });
+            
+            // --- Hide header on scroll down --- 
+            let lastScrollY = window.pageYOffset;
+            const header = document.querySelector('.main-header');
+            window.addEventListener('scroll', () => {
+                if(lastScrollY < window.pageYOffset) {
+                  header.style.top = '-80px';
+                } else {
+                  header.style.top = '0';
+                }
+                lastScrollY = window.pageYOffset;
+            });
+
+        });
+    </script>
+</body>
+</html>

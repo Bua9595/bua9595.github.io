@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Florian Bujupi | Portfolio</title>
+    <meta property="og:title" content="Florian Bujupi | Portfolio">
+    <meta property="og:description" content="Personal website and portfolio of Florian Bujupi.">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html, body { height: 100%; margin: 0; }
+      body { font-family: Arial, sans-serif; }
+      #frame { position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; }
+    </style>
+  </head>
+  <body>
+    <iframe id="frame" src="content.html"></iframe>
+
+    <script>
+      // Keep document title in sync with iframe content title
+      window.addEventListener('load', function() {
+        const frame = document.getElementById('frame');
+        frame.addEventListener('load', function() {
+          try {
+            const t = frame.contentDocument && frame.contentDocument.title;
+            if (t) {
+              document.title = t;
+              const og = document.querySelector('meta[property="og:title"]');
+              if (og) og.setAttribute('content', t);
+            }
+          } catch (e) {
+            // Cross-origin safety; ignore
+            console.warn('iframe title not accessible');
+          }
+        });
+      });
+    </script>
+  </body>
+  </html>
