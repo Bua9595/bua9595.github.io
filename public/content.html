@@ -163,6 +163,32 @@
             transition: color 0.3s ease;
         }
 
+        /* === Language Switch (top-left) === */
+        .lang-switch {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 101;
+        }
+        .lang-switch .lang-btn {
+            padding: 0.25rem 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            background: transparent;
+            color: var(--text-secondary-color);
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        .lang-switch .lang-btn.active {
+            color: var(--bg-color);
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
         /* === Hero Section === */
         #hero {
             height: 100vh;
@@ -429,6 +455,32 @@
             color: var(--text-secondary-color);
             margin-bottom: 0.5rem;
         }
+
+        /* Year markers inside the timeline (non-intrusive) */
+        .timeline-year {
+            position: absolute; /* align to item circle */
+            top: 15px;          /* same as .timeline-item::after */
+            margin: 0;
+            transform: none;
+        }
+        /* Position relative to the item side */
+        .timeline-item.left .timeline-year { right: -90px; text-align: left; }
+        .timeline-item.right .timeline-year { left: -90px; text-align: right; }
+        /* Slightly closer for the first item */
+        .timeline .timeline-item:first-of-type.left .timeline-year { right: -80px; }
+        /* Give the 2nd and 3rd items a bit more horizontal room */
+        .timeline .timeline-item:nth-of-type(2).right .timeline-year { left: -120px; }
+        .timeline .timeline-item:nth-of-type(3).left .timeline-year { right: -120px; }
+        .timeline-year span {
+            display: inline-block;
+            padding: 2px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            background: var(--bg-color);
+            color: var(--text-secondary-color);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
         
         /* === Contact Section === */
         #contact .container {
@@ -506,6 +558,14 @@
             .timeline-item.left::after, .timeline-item.right::after {
                 left: 21px;
             }
+
+            /* Year markers on mobile: align to the left of single-column line */
+            .timeline-item .timeline-year {
+                left: 45px;  /* near the vertical line */
+                right: auto;
+                top: 15px;
+                text-align: left;
+            }
         }
 
     </style>
@@ -514,12 +574,16 @@
     <canvas id='particle-canvas'></canvas>
 
     <header class='main-header'>
+        <div class='lang-switch' aria-label='Language switch'>
+            <button type='button' class='lang-btn' data-lang='de'>DE</button>
+            <button type='button' class='lang-btn' data-lang='en'>EN</button>
+        </div>
         <nav class='main-nav'>
             <ul>
-                <li><a href='#projects'>Projects</a></li>
-                <li><a href='#skills'>Skills</a></li>
-                <li><a href='#experience'>Experience</a></li>
-                <li><a href='#contact'>Contact</a></li>
+                <li><a href='#projects' data-i18n='nav.projects'>Projects</a></li>
+                <li><a href='#skills' data-i18n='nav.skills'>Skills</a></li>
+                <li><a href='#experience' data-i18n='nav.experience'>Experience</a></li>
+                <li><a href='#contact' data-i18n='nav.contact'>Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -534,14 +598,14 @@
                     <span class='typing-cursor'></span>
                 </p>
                 <p class='intro'>Technischer Assistent für Informatik (Abschluss 08/2025) mit Schwerpunkt IT‑Grundlagen, sowie über 8 Jahre Erfahrung in Lager/Logistik (Wareneingang/‑ausgang, Kommissionierung, SAP‑Grundlagen, Milkrun, Gefahrgut, Staplerschein Klasse L).</p>
-                <a href='#experience' class='cta-button'>Lebenslauf ansehen</a>
+                <a href='#experience' class='cta-button' data-i18n='hero.cta'>Lebenslauf ansehen</a>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section id='projects' class='reveal-on-scroll'>
             <div class='container'>
-                <h2>Projekte</h2>
+                <h2 data-i18n='section.projects'>Projekte</h2>
                 <div class='projects-grid'>
                     <!-- Project 1 -->
                     <article class='project-card'>
@@ -699,10 +763,10 @@
         <!-- Experience Section -->
         <section id='experience' class='reveal-on-scroll'>
             <div class='container'>
-                <h2>Experience & Education</h2>
+                <h2 data-i18n='section.experience'>Experience & Education</h2>
                 <div class='timeline'>
                     <!-- Most recent: Private builder -->
-                    <div class='timeline-item left reveal-on-scroll'>
+                    <div class='timeline-item left reveal-on-scroll' data-year='2025'>
                         <div class='timeline-content'>
                             <h3>Independent Builder (Web3 & IT)</h3>
                             <p class='date'>Present</p>
@@ -710,7 +774,7 @@
                         </div>
                     </div>
                     <!-- Education next -->
-                    <div class='timeline-item right reveal-on-scroll'>
+                    <div class='timeline-item right reveal-on-scroll' data-year='2023-2025'>
                         <div class='timeline-content'>
                             <h3>State-Certified Technical Assistant for Informatics</h3>
                             <p class='date'>Germany</p>
@@ -718,7 +782,7 @@
                         </div>
                     </div>
                     <!-- Oldest: Logistics at the bottom -->
-                    <div class='timeline-item left reveal-on-scroll'>
+                    <div class='timeline-item left reveal-on-scroll' data-year='2015-2023'>
                         <div class='timeline-content'>
                             <h3>Production & Logistics (SAP)</h3>
                             <p class='date'>Germany</p>
@@ -732,21 +796,19 @@
         <!-- Contact Section -->
         <section id='contact' class='reveal-on-scroll'>
             <div class='container'>
-                <h2>Get In Touch</h2>
+                <h2 data-i18n='section.contact'>Get In Touch</h2>
                 <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out.</p>
                 <div class='contact-links'>
-                    <a href='mailto:hello@bujupi.dev' title='Email'>
+                    <a href='mailto:bujupi9595@hotmail.de' title='Email'>
                          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 4.238l-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z'/></svg>
                     </a>
-                    <a href='#' target='_blank' rel='noopener noreferrer' title='GitHub'>
+                    <a href='https://github.com/Bua9595' target='_blank' rel='noopener noreferrer' title='GitHub'>
                         <svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>GitHub</title><path d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/></svg>
                     </a>
-                    <a href='#' target='_blank' rel='noopener noreferrer' title='LinkedIn'>
+                    <a href='https://www.linkedin.com/in/florian-bujupi-6197bb1ba/' target='_blank' rel='noopener noreferrer' title='LinkedIn'>
                          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z'/></svg>
                     </a>
-                    <a href='#' target='_blank' rel='noopener noreferrer' title='X (Twitter)'>
-                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='m18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z'/></svg>
-                    </a>
+                    
                 </div>
             </div>
         </section>
@@ -847,9 +909,165 @@
             init();
             animate();
 
+            // --- I18n + Language persistence ---
+            const I18N = {
+                en: {
+                    'nav.projects': 'Projects',
+                    'nav.skills': 'Skills',
+                    'nav.experience': 'Experience',
+                    'nav.contact': 'Contact',
+                    'section.projects': 'Projects',
+                    'section.experience': 'Experience & Education',
+                    'section.contact': 'Get In Touch',
+                    'hero.cta': 'View CV',
+                    'hero.intro': 'State-certified Technical Assistant for Informatics (graduation 08/2025) focused on IT fundamentals, plus 8+ years experience in warehousing/logistics (inbound/outbound, picking, SAP basics, milkrun, dangerous goods, forklift license Class L).',
+                    'footer.text': 'Built by Florian Bujupi | © 2025',
+                    'contact.body': "I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out.",
+                    'label.present': 'Present',
+                    'label.country.de': 'Germany',
+                    'proj.live': 'Live Demo',
+                    'proj.code': 'Code',
+                    'proj.sweeper.title': 'Crypto Sweeper (Game)',
+                    'proj.sweeper.desc': 'A simple web-based game concept to demonstrate UI/logic and core features.',
+                    'proj.blockviz.title': 'Blockchain Visualizer',
+                    'proj.blockviz.desc': 'A multi-chain transaction graph tool inspired by Bubblemaps and Etherscan, creating visual representations of complex on-chain data flows.',
+                    'proj.myriad.title': 'Myriad Markets Strategy',
+                    'proj.myriad.desc': 'A predictive analytics dashboard for token odds and ROI management, utilizing data models to forecast market movements.',
+                    'proj.help.title': '$HELP Ecosystem',
+                    'proj.help.desc': 'A social-impact token system on Solana with gamified incentives for real-world good, fostering a community-driven charity platform.',
+                    'exp.builder.title': 'Independent Builder (Web3 & IT)',
+                    'exp.builder.desc': 'Building products and prototypes privately — web apps, data tooling and blockchain experiments (Solana/EVM) — to sharpen skills and ship useful things.',
+                    'exp.edu.title': 'State-Certified Technical Assistant for Informatics',
+                    'exp.edu.desc': 'Completed intensive training in software development, system administration, and network engineering, laying the foundation for a career in technology.',
+                    'exp.logi.title': 'Production & Logistics (SAP)',
+                    'exp.logi.desc': 'Managed logistics workflows and data within SAP environments, optimizing supply chain processes and gaining deep insights into enterprise systems.'
+                },
+                de: {
+                    'nav.projects': 'Projekte',
+                    'nav.skills': 'Skills',
+                    'nav.experience': 'Lebenslauf',
+                    'nav.contact': 'Kontakt',
+                    'section.projects': 'Projekte',
+                    'section.experience': 'Erfahrung & Ausbildung',
+                    'section.contact': 'Kontakt aufnehmen',
+                    'hero.cta': 'Lebenslauf ansehen',
+                    'hero.intro': 'Technischer Assistent für Informatik (Abschluss 08/2025) mit Schwerpunkt IT‑Grundlagen sowie über 8 Jahre Erfahrung in Lager/Logistik (Wareneingang/-ausgang, Kommissionierung, SAP‑Grundlagen, Milkrun, Gefahrgut, Staplerschein Klasse L).',
+                    'footer.text': 'Erstellt von Florian Bujupi | © 2025',
+                    'contact.body': 'Ich freue mich über neue Projekte, kreative Ideen oder spannende Visionen. Melde dich gerne jederzeit.',
+                    'label.present': 'Aktuell',
+                    'label.country.de': 'Deutschland',
+                    'proj.live': 'Live‑Demo',
+                    'proj.code': 'Code',
+                    'proj.sweeper.title': 'Crypto Sweeper (Spiel)',
+                    'proj.sweeper.desc': 'Ein einfaches webbasiertes Spielkonzept zur Demonstration von UI/Logik und Grundfunktionen.',
+                    'proj.blockviz.title': 'Blockchain Visualizer',
+                    'proj.blockviz.desc': 'Ein Multi‑Chain‑Transaktionsgraf‑Tool, inspiriert von Bubblemaps und Etherscan, das komplexe On‑Chain‑Datenflüsse visuell darstellt.',
+                    'proj.myriad.title': 'Myriad Markets Strategy',
+                    'proj.myriad.desc': 'Ein Predictive‑Analytics‑Dashboard für Token‑Quoten und ROI‑Steuerung, das mit Datenmodellen Marktbewegungen abschätzt.',
+                    'proj.help.title': '$HELP Ökosystem',
+                    'proj.help.desc': 'Ein Social‑Impact‑Token‑System auf Solana mit Gamification‑Anreizen für Gutes in der realen Welt – gemeinschaftsgetriebene Charity‑Plattform.',
+                    'exp.builder.title': 'Selbstständiger Entwickler (Web3 & IT)',
+                    'exp.builder.desc': 'Private Entwicklung von Produkten und Prototypen – Web‑Apps, Data‑Tools und Blockchain‑Experimente (Solana/EVM) – um Skills zu schärfen und Nützliches zu liefern.',
+                    'exp.edu.title': 'Staatlich geprüfter Technischer Assistent für Informatik',
+                    'exp.edu.desc': 'Intensive Ausbildung in Softwareentwicklung, Systemadministration und Netzwerktechnik als Grundlage für die weitere Laufbahn in der IT.',
+                    'exp.logi.title': 'Produktion & Logistik (SAP)',
+                    'exp.logi.desc': 'Steuerung von Logistikprozessen und Daten in SAP‑Umgebungen, Optimierung der Supply‑Chain‑Abläufe und tiefe Einblicke in Enterprise‑Systeme.'
+                }
+            };
+            const TITLES_BY_LANG = {
+                en: ['IT Specialist', 'Blockchain Engineer', 'Systems Engineer'],
+                de: ['IT-Spezialist', 'Blockchain-Entwickler', 'Systemingenieur']
+            };
+            const LS_LANG_KEY = 'site_lang';
+
+            function applyLanguage(lang) {
+                const dict = I18N[lang] || I18N.en;
+                document.documentElement.setAttribute('lang', lang);
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (dict[key]) el.textContent = dict[key];
+                });
+                // Additional elements without data-i18n attributes
+                try {
+                    const intro = document.querySelector('.intro');
+                    if (intro && dict['hero.intro']) intro.textContent = dict['hero.intro'];
+
+                    const footerP = document.querySelector('footer p');
+                    if (footerP && dict['footer.text']) footerP.textContent = dict['footer.text'];
+
+                    const contactP = document.querySelector('#contact .container > p');
+                    if (contactP && dict['contact.body']) contactP.textContent = dict['contact.body'];
+
+                    // Timeline items (three expected)
+                    const tlItems = Array.from(document.querySelectorAll('.timeline .timeline-item'));
+                    if (tlItems.length >= 3) {
+                        const map = [
+                            { t: 'exp.builder.title', d: 'exp.builder.desc', when: 'label.present' },
+                            { t: 'exp.edu.title', d: 'exp.edu.desc', where: 'label.country.de' },
+                            { t: 'exp.logi.title', d: 'exp.logi.desc', where: 'label.country.de' }
+                        ];
+                        tlItems.slice(0,3).forEach((item, idx) => {
+                            const cfg = map[idx];
+                            const h3 = item.querySelector('.timeline-content h3');
+                            const date = item.querySelector('.timeline-content p.date');
+                            const p = item.querySelector('.timeline-content p:not(.date)');
+                            if (h3 && dict[cfg.t]) h3.textContent = dict[cfg.t];
+                            if (p && dict[cfg.d]) p.textContent = dict[cfg.d];
+                            if (date) {
+                                const key = cfg.when || cfg.where;
+                                if (key && dict[key]) date.textContent = dict[key];
+                            }
+                        });
+                    }
+
+                    // Projects (4 expected)
+                    const cards = Array.from(document.querySelectorAll('.project-card'));
+                    const pmap = [
+                        { t: 'proj.sweeper.title', d: 'proj.sweeper.desc' },
+                        { t: 'proj.blockviz.title', d: 'proj.blockviz.desc' },
+                        { t: 'proj.myriad.title', d: 'proj.myriad.desc' },
+                        { t: 'proj.help.title', d: 'proj.help.desc' }
+                    ];
+                    cards.forEach((card, i) => {
+                        const content = card.querySelector('.project-card-content');
+                        if (!content) return;
+                        const h3 = content.querySelector('h3');
+                        const p = content.querySelector('p');
+                        const links = content.parentElement.querySelectorAll('.project-links a');
+                        const entry = pmap[i];
+                        if (entry) {
+                            if (h3 && dict[entry.t]) h3.textContent = dict[entry.t];
+                            if (p && dict[entry.d]) p.textContent = dict[entry.d];
+                        }
+                        // update button labels without affecting SVGs
+                        function setAnchorLabel(a, text) {
+                            if (!a) return;
+                            const tn = Array.from(a.childNodes).reverse().find(n => n.nodeType === Node.TEXT_NODE);
+                            if (tn) tn.textContent = ' ' + text; else a.appendChild(document.createTextNode(' ' + text));
+                        }
+                        if (links[0]) setAnchorLabel(links[0], dict['proj.live'] || 'Live Demo');
+                        if (links[1]) setAnchorLabel(links[1], dict['proj.code'] || 'Code');
+                    });
+                } catch (_err) {
+                    // no-op
+                }
+                // update titles for typing effect if present
+                if (typeof titles !== 'undefined') {
+                    titles = TITLES_BY_LANG[lang] || TITLES_BY_LANG.en;
+                    titleIndex = 0; charIndex = 0; isDeleting = false;
+                }
+                // update active button state
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+                try { localStorage.setItem(LS_LANG_KEY, lang); } catch (_e) {}
+            }
+            const savedLang = (() => { try { return localStorage.getItem(LS_LANG_KEY); } catch (_e) { return null; } })();
+            const initialLang = savedLang || (document.documentElement.lang || 'en');
+
             // --- Typing Effect ---
             const typingElement = document.getElementById('typing-effect');
-            const titles = ['IT Specialist', 'Blockchain Engineer', 'Systems Engineer'];
+            let titles = TITLES_BY_LANG[initialLang] || TITLES_BY_LANG.en;
             let titleIndex = 0;
             let charIndex = 0;
             let isDeleting = false;
@@ -876,6 +1094,37 @@
                 setTimeout(type, typeSpeed);
             }
             type();
+
+            // Apply initial language and hook up buttons
+            applyLanguage(initialLang);
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+            });
+
+            // --- Timeline Year Markers ---
+            function insertTimelineYears() {
+                const timeline = document.querySelector('.timeline');
+                if (!timeline) return;
+                // Remove existing markers to avoid duplicates on re-run
+                timeline.querySelectorAll('.timeline-year').forEach(n => n.remove());
+                let last = null;
+                const items = Array.from(timeline.querySelectorAll('.timeline-item'));
+                items.forEach(item => {
+                    const label = item.getAttribute('data-year');
+                    if (!label) return;
+                    if (label !== last) {
+                        const marker = document.createElement('div');
+                        marker.className = 'timeline-year reveal-on-scroll';
+                        const pill = document.createElement('span');
+                        pill.textContent = label;
+                        marker.appendChild(pill);
+                        // Append inside the item so top:15px equals the dot position
+                        item.appendChild(marker);
+                        last = label;
+                    }
+                });
+            }
+            insertTimelineYears();
 
             // --- Scroll-triggered Animations ---
             const scrollObserver = new IntersectionObserver((entries, observer) => {
