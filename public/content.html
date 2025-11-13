@@ -327,6 +327,11 @@
             font-size: 0.9rem;
         }
 
+        /* Hide placeholder links that point nowhere */
+        .project-links a[href='#'] {
+            display: none;
+        }
+
         .project-links a svg {
             width: 20px;
             height: 20px;
@@ -597,7 +602,7 @@
                     <span id='typing-effect'></span>
                     <span class='typing-cursor'></span>
                 </p>
-                <p class='intro'>Technischer Assistent für Informatik (Abschluss 08/2025) mit Schwerpunkt IT‑Grundlagen, sowie über 8 Jahre Erfahrung in Lager/Logistik (Wareneingang/‑ausgang, Kommissionierung, SAP‑Grundlagen, Milkrun, Gefahrgut, Staplerschein Klasse L).</p>
+                <p class='intro'>Technischer Assistent für Informatik (Abschluss 08/2025) mit Schwerpunkt IT‑Grundlagen, sowie Ausbildung als Fachkraft für Lagerlogistik und über 8 Jahre Erfahrung in Lager/Logistik (Wareneingang/‑ausgang, Kommissionierung, SAP‑Grundlagen, Milkrun, Gefahrgut, Staplerschein Klasse L).</p>
                 <a href='#experience' class='cta-button' data-i18n='hero.cta'>Lebenslauf ansehen</a>
             </div>
         </section>
@@ -782,7 +787,7 @@
                         </div>
                     </div>
                     <!-- Oldest: Logistics at the bottom -->
-                    <div class='timeline-item left reveal-on-scroll' data-year='2015-2023'>
+                    <div class='timeline-item left reveal-on-scroll' data-year='2013-2023'>
                         <div class='timeline-content'>
                             <h3>Production & Logistics (SAP)</h3>
                             <p class='date'>Germany</p>
@@ -909,6 +914,17 @@
             init();
             animate();
 
+            // Fix head meta values to correct encoding/text
+            try {
+                document.title = 'Florian Bujupi | Technischer Assistent für Informatik';
+                const metaDesc = document.querySelector("meta[name='description']");
+                if (metaDesc) metaDesc.setAttribute('content', 'Persönliche Website von Florian Bujupi. Technischer Assistent für Informatik (Abschluss 2025) mit über 8 Jahren Erfahrung in Lager & Logistik.');
+                const ogTitle = document.querySelector("meta[property='og:title']");
+                if (ogTitle) ogTitle.setAttribute('content', 'Florian Bujupi | Technischer Assistent für Informatik');
+                const ogDesc = document.querySelector("meta[property='og:description']");
+                if (ogDesc) ogDesc.setAttribute('content', 'Über 8 Jahre Lager/Logistik, Ausbildung TAI (GBS Sabel München, 2023–2025), praxisnahe IT‑Grundlagen.');
+            } catch (_e) {}
+
             // --- I18n + Language persistence ---
             const I18N = {
                 en: {
@@ -974,6 +990,25 @@
                     'exp.logi.desc': 'Steuerung von Logistikprozessen und Daten in SAP‑Umgebungen, Optimierung der Supply‑Chain‑Abläufe und tiefe Einblicke in Enterprise‑Systeme.'
                 }
             };
+            // Correct encoding for i18n strings
+            try {
+                I18N.en['footer.text'] = 'Built by Florian Bujupi | © 2025';
+                I18N.en['exp.builder.desc'] = 'Building products and prototypes privately — web apps, data tooling and blockchain experiments (Solana/EVM) — to sharpen skills and ship useful things.';
+
+                I18N.de['hero.intro'] = 'Technischer Assistent für Informatik (Abschluss 08/2025) mit Schwerpunkt IT‑Grundlagen sowie über 8 Jahre Erfahrung in Lager/Logistik (Wareneingang/‑ausgang, Kommissionierung, SAP‑Grundlagen, Milkrun, Gefahrgut, Staplerschein Klasse L).';
+                I18N.de['footer.text'] = 'Erstellt von Florian Bujupi | © 2025';
+                I18N.de['contact.body'] = 'Ich freue mich über neue Projekte, kreative Ideen oder spannende Visionen. Melde dich gerne jederzeit.';
+                I18N.de['proj.live'] = 'Live‑Demo';
+                I18N.de['proj.blockviz.desc'] = 'Ein Multi‑Chain‑Transaktionsgrafik‑Tool, inspiriert von Bubblemaps und Etherscan, das komplexe On‑Chain‑Datenflüsse visuell darstellt.';
+                I18N.de['proj.myriad.desc'] = 'Ein Predictive‑Analytics‑Dashboard für Token‑Quoten und ROI‑Steuerung, das mit Datenmodellen Marktbewegungen abschätzt.';
+                I18N.de['proj.help.title'] = '$HELP Ökosystem';
+                I18N.de['proj.help.desc'] = 'Ein Social‑Impact‑Token‑System auf Solana mit Gamification‑Anreizen für Gutes in der realen Welt — eine gemeinschaftsgetriebene Charity‑Plattform.';
+                I18N.de['exp.builder.title'] = 'Selbstständiger Entwickler (Web3 & IT)';
+                I18N.de['exp.builder.desc'] = 'Private Entwicklung von Produkten und Prototypen — Web‑Apps, Data‑Tools und Blockchain‑Experimente (Solana/EVM) — um Skills zu schärfen und Nützliches zu liefern.';
+                I18N.de['exp.edu.title'] = 'Staatlich geprüfter Technischer Assistent für Informatik';
+                I18N.de['exp.edu.desc'] = 'Intensive Ausbildung in Softwareentwicklung, Systemadministration und Netzwerktechnik als Grundlage für die weitere Laufbahn in der IT.';
+                I18N.de['exp.logi.desc'] = 'Steuerung von Logistikprozessen und Daten in SAP‑Umgebungen, Optimierung der Supply‑Chain‑Abläufe und tiefe Einblicke in Enterprise‑Systeme.';
+            } catch (_e) {}
             const TITLES_BY_LANG = {
                 en: ['IT Specialist', 'Blockchain Engineer', 'Systems Engineer'],
                 de: ['IT-Spezialist', 'Blockchain-Entwickler', 'Systemingenieur']
@@ -1052,6 +1087,36 @@
                         }
                         if (links[0]) setAnchorLabel(links[0], dict['proj.live'] || 'Live Demo');
                         if (links[1]) setAnchorLabel(links[1], dict['proj.code'] || 'Code');
+
+                        // Hide the links container if all anchors are placeholders
+                        const linksContainer = content.querySelector('.project-links') || card.querySelector('.project-links');
+                        if (linksContainer) {
+                            const anchors = Array.from(linksContainer.querySelectorAll('a'));
+                            const allDummy = anchors.length > 0 && anchors.every(a => {
+                                const href = (a.getAttribute('href') || '').trim();
+                                return href === '' || href === '#';
+                            });
+                            if (allDummy) linksContainer.style.display = 'none';
+                        }
+
+                        // Add robust image fallback for broken thumbnails
+                        const imgEl = card.querySelector('img');
+                        if (imgEl) {
+                            imgEl.loading = 'lazy';
+                            imgEl.decoding = 'async';
+                            const titles = [
+                                'Crypto%20Sweeper',
+                                'Blockchain%20Visualizer',
+                                'Myriad%20Markets%20Strategy',
+                                '%24HELP%20Ecosystem'
+                            ];
+                            const phText = titles[i] || 'Project';
+                            const placeholder = `https://placehold.co/640x200?text=${phText}`;
+                            imgEl.addEventListener('error', function onerr() {
+                                imgEl.removeEventListener('error', onerr);
+                                imgEl.src = placeholder;
+                            }, { once: true });
+                        }
                     });
                 } catch (_err) {
                     // no-op
