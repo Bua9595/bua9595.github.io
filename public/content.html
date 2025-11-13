@@ -303,6 +303,11 @@
             flex-grow: 1;
         }
 
+        /* Reduce whitespace on the 3rd project (Myriad Markets) like the HELP card */
+        .projects-grid .project-card:nth-of-type(3) .project-card-content p {
+            flex-grow: 0;
+        }
+
         .project-stack {
             display: flex;
             flex-wrap: wrap;
@@ -1027,6 +1032,10 @@
             // Apply your updated German intro explicitly (ensures it overrides any static markup)
             try {
                 I18N.de['hero.intro'] = 'Technischer Assistent für Informatik (Abschluss 08/2025) mit Schwerpunkt IT‑Grundlagen, sowie Fachkraft für Lagerlogistik und über 8 Jahre Erfahrung in Lager/Logistik (Wareneingang/‑ausgang, Kommissionierung, SAP‑Grundlagen, Milkrun, Gefahrgut, Staplerschein Klasse L).';
+            } catch (_e) {}
+            // Ensure English intro includes logistics specialist
+            try {
+                I18N.en['hero.intro'] = 'State-certified Technical Assistant for Informatics (graduation 08/2025) focused on IT fundamentals, as well as a certified warehouse logistics specialist, plus 8+ years experience in warehousing/logistics (inbound/outbound, picking, SAP basics, milkrun, dangerous goods, forklift license Class L).';
             } catch (_e) {}
             const LS_LANG_KEY = 'site_lang';
 
