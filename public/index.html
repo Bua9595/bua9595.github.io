@@ -1,40 +1,67 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Florian Bujupi | Portfolio</title>
-    <meta property="og:title" content="Florian Bujupi | Portfolio">
-    <meta property="og:description" content="Personal website and portfolio of Florian Bujupi.">
-    <meta property="og:url" content="https://bua9595.github.io/">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      html, body { height: 100%; margin: 0; }
-      body { font-family: Arial, sans-serif; }
-      #frame { position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: none; width: 100%; height: 100%; }
-    </style>
-  </head>
-  <body>
-    <iframe id="frame" src="content.html"></iframe>
+<html lang="en">
 
-    <script>
-      // Keep document title in sync with iframe content title
-      window.addEventListener('load', function() {
-        const frame = document.getElementById('frame');
-        frame.addEventListener('load', function() {
-          try {
-            const t = frame.contentDocument && frame.contentDocument.title;
-            if (t) {
-              document.title = t;
-              const og = document.querySelector('meta[property="og:title"]');
-              if (og) og.setAttribute('content', t);
-            }
-          } catch (e) {
-            // Cross-origin safety; ignore
-            console.warn('iframe title not accessible');
-          }
-        });
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Primary -->
+  <title>Florian Bujupi | Technischer Assistent für Informatik</title>
+  <meta name="description" content="Personal website and portfolio of Florian Bujupi." />
+
+  <!-- Open Graph (static for share previews) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Florian Bujupi | Technischer Assistent für Informatik" />
+  <meta property="og:description" content="Personal website and portfolio of Florian Bujupi." />
+  <meta property="og:url" content="https://bua9595.github.io/" />
+  <!-- IMPORTANT: set a real image you host, not a random placeholder -->
+  <meta property="og:image" content="https://bua9595.github.io/img/og-cover.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Florian Bujupi | Technischer Assistent für Informatik" />
+  <meta name="twitter:description" content="Personal website and portfolio of Florian Bujupi." />
+  <meta name="twitter:image" content="https://bua9595.github.io/img/og-cover.png" />
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <iframe id="frame" src="content.html" title="Florian Bujupi Portfolio"></iframe>
+
+  <script>
+    // Cosmetic only: keep browser tab title in sync with iframe title (share previews ignore JS)
+    window.addEventListener('load', () => {
+      const frame = document.getElementById('frame');
+      frame.addEventListener('load', () => {
+        try {
+          const t = frame.contentDocument && frame.contentDocument.title;
+          if (t) document.title = t;
+        } catch (_) { /* ignore */ }
       });
-    </script>
-  </body>
-  </html>
+    });
+  </script>
+</body>
+
+</html>
