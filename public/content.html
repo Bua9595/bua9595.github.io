@@ -48,6 +48,7 @@
             scroll-behavior: smooth;
             scrollbar-width: thin;
             scrollbar-color: var(--primary-color) var(--surface-color);
+            scroll-padding-top: 96px;
         }
 
         body {
@@ -598,8 +599,8 @@
                 padding-top: 4.5rem;
             }
 
-            section {
-                scroll-margin-top: 128px;
+            html {
+                scroll-padding-top: 128px;
             }
 
             .timeline::after {
@@ -678,7 +679,7 @@
                 <div class="projects-grid">
 
                     <!-- Project 1: Bewerbungsagent -->
-                    <article class="project-card is-hidden">
+                    <article class="project-card">
                         <div class="project-thumb" aria-hidden="true"></div>
                         <div class="project-card-content">
                             <h3 data-i18n="proj.agent.title">Bewerbungsagent</h3>
@@ -697,7 +698,7 @@
                     </article>
 
                     <!-- Project 2: Polymarket Script -->
-                    <article class="project-card">
+                    <article class="project-card is-hidden">
                         <div class="project-thumb" aria-hidden="true"></div>
                         <div class="project-card-content">
                             <h3 data-i18n="proj.poly.title">Polymarket Script</h3>
