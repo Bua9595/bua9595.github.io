@@ -79,6 +79,7 @@
         section {
             padding: 6rem 0;
             border-bottom: 1px solid var(--border-color);
+            scroll-margin-top: 96px;
         }
 
         /* === Typography === */
@@ -294,6 +295,10 @@
             transform: translateY(-10px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             border-color: var(--primary-color);
+        }
+
+        .project-card.is-hidden {
+            display: none;
         }
 
         /* No external images required */
@@ -593,6 +598,10 @@
                 padding-top: 4.5rem;
             }
 
+            section {
+                scroll-margin-top: 128px;
+            }
+
             .timeline::after {
                 left: 31px;
             }
@@ -669,7 +678,7 @@
                 <div class="projects-grid">
 
                     <!-- Project 1: Bewerbungsagent -->
-                    <article class="project-card">
+                    <article class="project-card is-hidden">
                         <div class="project-thumb" aria-hidden="true"></div>
                         <div class="project-card-content">
                             <h3 data-i18n="proj.agent.title">Bewerbungsagent</h3>
