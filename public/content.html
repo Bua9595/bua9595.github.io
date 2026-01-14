@@ -698,7 +698,7 @@
                     </article>
 
                     <!-- Project 2: Polymarket Script -->
-                    <article class="project-card is-hidden">
+                    <article class="project-card">
                         <div class="project-thumb" aria-hidden="true"></div>
                         <div class="project-card-content">
                             <h3 data-i18n="proj.poly.title">Polymarket Script</h3>
@@ -732,7 +732,7 @@
                     </article>
 
                     <!-- Project 4: Wallet Visualizer -->
-                    <article class="project-card">
+                    <article class="project-card is-hidden">
                         <div class="project-thumb" aria-hidden="true"></div>
                         <div class="project-card-content">
                             <h3 data-i18n="proj.viz.title">Wallet / Transaction Visualizer</h3>
@@ -1239,10 +1239,30 @@
                 scrollObserver.observe(el);
             });
 
+            // --- Anchor scroll offset (fixed header) ---
+            const header = document.querySelector('.main-header');
+            function scrollToAnchor(hash) {
+                const target = document.querySelector(hash);
+                if (!target) return;
+                const headerHeight = header ? header.offsetHeight : 0;
+                const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 12;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', (event) => {
+                    const href = link.getAttribute('href');
+                    if (!href || href === '#') return;
+                    if (!document.querySelector(href)) return;
+                    event.preventDefault();
+                    scrollToAnchor(href);
+                });
+            });
+
             // --- Hide header on scroll down ---
             let lastScrollY = window.pageYOffset;
-            const header = document.querySelector('.main-header');
             window.addEventListener('scroll', () => {
+                if (!header) return;
                 if (lastScrollY < window.pageYOffset) header.style.top = '-80px';
                 else header.style.top = '0';
                 lastScrollY = window.pageYOffset;
