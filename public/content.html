@@ -555,16 +555,42 @@
             }
 
             .main-header {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.75rem;
+                padding: 0.75rem 0.75rem 1rem;
+            }
+
+            .lang-switch {
+                position: static;
+                transform: none;
+                width: 100%;
                 justify-content: center;
             }
 
+            .main-nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem 1.25rem;
+            }
+
             .main-nav ul li {
-                margin: 0 1rem;
+                margin: 0;
+            }
+
+            .main-nav ul li a {
+                font-size: 0.75rem;
+                letter-spacing: 0.5px;
             }
 
             #hero .subtitle {
                 font-size: 1rem;
                 height: 1.5rem;
+            }
+
+            #hero {
+                padding-top: 4.5rem;
             }
 
             .timeline::after {
@@ -589,9 +615,8 @@
             }
 
             .timeline-item .timeline-year {
-                left: 45px;
-                right: auto;
-                top: 15px;
+                position: static;
+                margin: 0 0 0.75rem 0;
                 text-align: left;
             }
         }
@@ -1181,7 +1206,9 @@
                         const pill = document.createElement('span');
                         pill.textContent = label;
                         marker.appendChild(pill);
-                        item.appendChild(marker);
+                        const content = item.querySelector('.timeline-content');
+                        if (content) item.insertBefore(marker, content);
+                        else item.appendChild(marker);
                         last = label;
                     }
                 });
