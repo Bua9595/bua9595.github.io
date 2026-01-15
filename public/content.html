@@ -691,7 +691,25 @@
 
                 <div class="projects-grid">
 
-                    <!-- Project 1: Bewerbungsagent -->
+                    <!-- Project 1: BuasBandaiShop -->
+                    <a class="project-card project-link" href="https://bua9595.github.io/BuasBandaiShop/index.html">
+                        <div class="project-thumb has-image" style="background-image: url('img/BuasBandaiShop.png');"
+                            aria-hidden="true"></div>
+                        <div class="project-card-content">
+                            <h3 data-i18n="proj.shop.title">BuasBandaiShop</h3>
+                            <p data-i18n="proj.shop.desc">
+                                Small web store for One Piece TCG cards with structured product listings and clean UI.
+                            </p>
+                            <div class="project-stack">
+                                <span class="stack-tag">HTML</span>
+                                <span class="stack-tag">CSS</span>
+                                <span class="stack-tag">JavaScript</span>
+                                <span class="stack-tag">GitHub Pages</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Project 2: Bewerbungsagent -->
                     <a class="project-card project-link" href="https://github.com/Bua9595/Bewerbungsagent">
                         <div class="project-thumb has-image" style="background-image: url('img/Bewerbungsagent.png');"
                             aria-hidden="true"></div>
@@ -711,7 +729,7 @@
                         </div>
                     </a>
 
-                    <!-- Project 2: Polymarket Script -->
+                    <!-- Project 3: Polymarket Script -->
                     <a class="project-card project-link" href="https://github.com/Bua9595/Polymarket_Script">
                         <div class="project-thumb has-image" style="background-image: url('img/Polymarket_Script.png');"
                             aria-hidden="true"></div>
@@ -725,24 +743,6 @@
                                 <span class="stack-tag">Python</span>
                                 <span class="stack-tag">APIs</span>
                                 <span class="stack-tag">Data Processing</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- Project 3: BuasBandaiShop -->
-                    <a class="project-card project-link" href="https://bua9595.github.io/BuasBandaiShop/index.html">
-                        <div class="project-thumb has-image" style="background-image: url('img/BuasBandaiShop.png');"
-                            aria-hidden="true"></div>
-                        <div class="project-card-content">
-                            <h3 data-i18n="proj.shop.title">BuasBandaiShop</h3>
-                            <p data-i18n="proj.shop.desc">
-                                Small web store for One Piece TCG cards with structured product listings and clean UI.
-                            </p>
-                            <div class="project-stack">
-                                <span class="stack-tag">HTML</span>
-                                <span class="stack-tag">CSS</span>
-                                <span class="stack-tag">JavaScript</span>
-                                <span class="stack-tag">GitHub Pages</span>
                             </div>
                         </div>
                     </a>
@@ -1274,6 +1274,19 @@
                     scrollToAnchor(href);
                 });
             });
+
+            // --- Project links inside iframe (open top-level) ---
+            const inFrame = window.top !== window.self;
+            if (inFrame) {
+                document.querySelectorAll('.project-card.project-link').forEach(link => {
+                    link.addEventListener('click', (event) => {
+                        const url = link.getAttribute('href');
+                        if (!url) return;
+                        event.preventDefault();
+                        window.top.location.href = url;
+                    });
+                });
+            }
 
             // --- Hide header on scroll down ---
             let lastScrollY = window.pageYOffset;
