@@ -295,6 +295,7 @@
         .project-card.project-link {
             color: inherit;
             text-decoration: none;
+            cursor: pointer;
         }
 
         .project-card:hover {
@@ -1254,6 +1255,16 @@
 
             document.querySelectorAll('.reveal-on-scroll').forEach(el => {
                 scrollObserver.observe(el);
+            });
+
+            // --- Project card click handling (iframe-safe) ---
+            document.querySelectorAll('.project-card.project-link').forEach(card => {
+                card.addEventListener('click', (event) => {
+                    const url = card.getAttribute('href');
+                    if (!url) return;
+                    event.preventDefault();
+                    window.open(url, '_blank', 'noopener');
+                });
             });
 
             // --- Anchor scroll offset (fixed header) ---
