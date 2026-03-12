@@ -1,29 +1,43 @@
-# Personal Website
-Dies ist die aktuellste und vorerst fertige Version der persoenlichen Webseite.
+# Persoenliche Website
 
-## Ueberblick
-- Statische Inhalte liegen in `public/`.
-- `public/index.html` laedt `public/content.html` per IFrame.
-- Der Node/Express-Server in `server.js` dient fuer lokale Starts und einen optionalen Proxy.
-
-## Lokal starten
-1. `npm install`
-2. `npm start`
-3. `http://localhost:3000` im Browser oeffnen
-
-Hinweis: Wenn der Port belegt ist, wechselt der Server automatisch auf den naechsten freien Port.
-
-## Konfiguration (optional)
-- `PORT`: HTTP-Port (Standard 3000)
-- `HTTPS=true`: aktiviert HTTPS (Zertifikate erforderlich)
-- `SSL_PORT`: HTTPS-Port (Standard 3443)
-- `SSL_KEY_PATH`: Pfad zum privaten Schluessel
-- `SSL_CERT_PATH`: Pfad zum Zertifikat
-- `PROXY_PREFIX`: Standard `/api`
-- `PROXY_TARGET`: Ziel-URL fuer den Entwicklungs-Proxy
+Statische Website mit kleinem Node-Server fuer lokales Testen.
 
 ## Struktur
-- `public/index.html`: Einstiegspunkt inkl. Meta-Tags
-- `public/content.html`: eigentliche Seiteninhalte
+- Statische Seiten liegen in `public/`.
+- Einstiegspunkt des Node-Servers ist `server.js`.
+- `public/index.html`: Vollstaendige Seite (HTML/CSS/JS direkt)
 - `public/img/`: Bilder/Assets
-- `server.js`: Express-Server mit Static-Hosting, Health-Check (`/health`) und optionalem Proxy
+- `public/robots.txt`: Crawler-Direktiven
+- `public/sitemap.xml`: Sitemap fuer Suchmaschinen
+
+## Voraussetzungen
+- Node.js (LTS empfohlen)
+
+## Schnellstart (Windows / PowerShell)
+1) Terminal im Projektordner oeffnen.
+2) Abhaengigkeiten installieren:
+```powershell
+npm install
+```
+3) Server starten:
+```powershell
+npm run start
+```
+4) Browser oeffnen:
+- Standard: `http://localhost:3000`
+- Wenn 3000 belegt ist, wechselt der Server automatisch auf den naechsten freien Port.
+
+## Hinweise
+- Das Label ```sh``` in Codebloecken bedeutet "Shell-Befehl" und ist nur zur Hervorhebung.
+- Alternativ kannst du direkt starten mit:
+```powershell
+node server.js
+```
+
+## Optionale Einstellungen (ENV)
+- `PORT`: HTTP-Port (Standard 3000)
+- `HTTPS=true`: startet HTTPS, wenn Zertifikate vorhanden sind
+- `SSL_PORT`: HTTPS-Port (Standard 3443)
+- `SSL_KEY_PATH`, `SSL_CERT_PATH`: Pfade zu Zertifikaten
+- `PROXY_PREFIX`: Pfad-Prefix fuer Proxy (Standard `/api`)
+- `PROXY_TARGET`: Ziel-URL fuer Proxy, z. B. `https://api.example.com`
