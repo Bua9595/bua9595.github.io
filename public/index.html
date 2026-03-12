@@ -2,66 +2,1050 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Primary -->
-  <title>Florian Bujupi | Technischer Assistent für Informatik</title>
-  <meta name="description" content="Personal website and portfolio of Florian Bujupi." />
+    <!-- Primary SEO -->
+    <title>Florian Bujupi — IT Support, Automation & Portfolio</title>
+    <meta name="description" content="Portfolio von Florian Bujupi — Staatlich geprüfter Technischer Assistent für Informatik. Python-Automatisierung, IT-Support, APIs und Daten. Projekte ansehen." />
+    <meta name="author" content="Florian Bujupi" />
+    <meta name="keywords" content="Florian Bujupi, IT Support, Python Automation, Portfolio, Junior IT, Informatik" />
+    <link rel="canonical" href="https://bua9595.github.io/" />
 
-  <!-- Open Graph (static for share previews) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Florian Bujupi | Technischer Assistent für Informatik" />
-  <meta property="og:description" content="Personal website and portfolio of Florian Bujupi." />
-  <meta property="og:url" content="https://bua9595.github.io/" />
-  <!-- IMPORTANT: set a real image you host, not a random placeholder -->
-  <meta property="og:image" content="https://bua9595.github.io/img/og-cover.png" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Florian Bujupi — IT Support & Automation" />
+    <meta property="og:description" content="Praktische Tools, Python-Automatisierung und IT-Projekte — Portfolio von Florian Bujupi." />
+    <meta property="og:url" content="https://bua9595.github.io/" />
+    <meta property="og:image" content="https://bua9595.github.io/img/Bewerbungsagent.png" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Florian Bujupi | Technischer Assistent für Informatik" />
-  <meta name="twitter:description" content="Personal website and portfolio of Florian Bujupi." />
-  <meta name="twitter:image" content="https://bua9595.github.io/img/og-cover.png" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Florian Bujupi — IT Support & Automation" />
+    <meta name="twitter:description" content="Praktische Tools, Python-Automatisierung und IT-Projekte." />
+    <meta name="twitter:image" content="https://bua9595.github.io/img/Bewerbungsagent.png" />
 
-  <style>
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-    }
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Florian Bujupi",
+        "url": "https://bua9595.github.io/",
+        "jobTitle": "Staatlich geprüfter Technischer Assistent für Informatik",
+        "knowsAbout": ["IT Support", "Python", "Automation", "REST APIs", "SQL"],
+        "sameAs": [
+          "https://github.com/Bua9595",
+          "https://www.linkedin.com/in/florian-bujupi/"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Florian Bujupi Portfolio",
+        "url": "https://bua9595.github.io/"
+      }
+    ]
+    </script>
 
-    body {
-      font-family: Arial, sans-serif;
-    }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-    #frame {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: none;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+    <!-- Umami Analytics (cookie-free, GDPR-compliant) -->
+    <!-- Register at umami.is and replace DEINE-UMAMI-ID with your website ID -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="ea5a0b69-6757-4444-a669-0d9f67eabe43"></script>
+
+    <style>
+        :root {
+            --bg-color: #05080D;
+            --surface-color: #0E1018;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --primary-color: #bcc904;
+            --secondary-color: #b80101bb;
+            --text-color: #E0E0E0;
+            --text-secondary-color: #8892B0;
+            --font-family: 'Poppins', sans-serif;
+            --gradient: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--surface-color);
+            scroll-padding-top: 96px;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        #particle-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 2rem;
+            width: 100%;
+        }
+
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+            scroll-margin-top: 96px;
+        }
+
+        h1, h2, h3 { font-weight: 600; line-height: 1.2; }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px; left: 50%;
+            transform: translateX(-50%);
+            width: 50px; height: 3px;
+            background: var(--gradient);
+        }
+
+        p { color: var(--text-secondary-color); }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover { color: var(--secondary-color); }
+
+        /* === Scroll Reveal === */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === Header === */
+        .main-header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            display: flex; justify-content: flex-end;
+            padding: 1.5rem 2rem;
+            z-index: 100;
+            background: rgba(5, 8, 13, 0.5);
+            backdrop-filter: blur(10px);
+            transition: top 0.3s;
+        }
+
+        .main-nav ul { list-style: none; display: flex; }
+        .main-nav ul li { margin-left: 2rem; }
+        .main-nav ul li a {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        /* === Language Switch === */
+        .lang-switch {
+            position: absolute; left: 1rem; top: 50%;
+            transform: translateY(-50%);
+            display: flex; gap: 0.5rem; z-index: 101;
+        }
+
+        .lang-switch .lang-btn {
+            padding: 0.25rem 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            background: transparent;
+            color: var(--text-secondary-color);
+            font-weight: 600; font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .lang-switch .lang-btn.active {
+            color: var(--bg-color);
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        /* === Hero === */
+        #hero {
+            height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; flex-direction: column;
+            border-bottom: none;
+        }
+
+        #hero .container { display: flex; flex-direction: column; align-items: center; }
+        #hero h1 { margin-bottom: 0.5rem; }
+
+        #hero .subtitle {
+            font-size: 1.25rem; font-weight: 300;
+            color: var(--text-secondary-color);
+            margin-bottom: 1.5rem; height: 2rem;
+        }
+
+        .typing-cursor {
+            display: inline-block; width: 2px; height: 1.25rem;
+            background: var(--primary-color);
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        #hero .intro {
+            max-width: 720px; margin-bottom: 2rem;
+            color: var(--text-color); font-size: 1.1rem;
+            white-space: pre-line;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border: 1px solid var(--primary-color);
+            border-radius: 50px; font-weight: 600;
+            background: transparent; color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px rgba(0, 163, 255, 0.5);
+        }
+
+        /* Hero social icons */
+        .hero-social {
+            display: flex; gap: 1.5rem;
+            margin-top: 1.5rem; justify-content: center;
+        }
+
+        .hero-social a {
+            color: var(--text-secondary-color);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero-social a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .hero-social svg { width: 22px; height: 22px; fill: currentColor; }
+
+        /* === Projects === */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem; align-items: start;
+        }
+
+        .project-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px; overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; flex-direction: column;
+        }
+
+        .project-card.project-link {
+            color: inherit; text-decoration: none;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .project-thumb {
+            width: 100%; height: 200px;
+            object-fit: cover; display: block;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .project-card-content {
+            padding: 1.5rem; flex-grow: 1;
+            display: flex; flex-direction: column;
+        }
+
+        .project-card h3 { margin-bottom: 0.5rem; color: var(--text-color); }
+        .project-card p { margin-bottom: 1rem; font-size: 0.9rem; flex-grow: 1; }
+
+        .project-stack {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;
+        }
+
+        .stack-tag {
+            background-color: rgba(0, 163, 255, 0.1);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px; font-size: 0.75rem; font-weight: 500;
+        }
+
+        .project-cta-label {
+            font-size: 0.8rem; font-weight: 600;
+            color: var(--primary-color);
+            margin-top: auto;
+        }
+
+        /* === Skills (Pill System) === */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem; color: var(--text-color);
+            display: flex; align-items: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-pills {
+            display: flex; flex-wrap: wrap; gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .skill-pill {
+            display: flex; align-items: center; gap: 0.5rem;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.4rem 0.75rem;
+            font-size: 0.85rem; color: var(--text-color);
+        }
+
+        .level-badge {
+            font-size: 0.68rem; font-weight: 600;
+            padding: 0.1rem 0.45rem;
+            border-radius: 999px; border: 1px solid;
+            white-space: nowrap;
+        }
+
+        .level-practical { color: var(--primary-color); border-color: var(--primary-color); }
+        .level-solid { color: #7aa2f7; border-color: #7aa2f7; }
+        .level-basic { color: var(--text-secondary-color); border-color: var(--border-color); }
+
+        /* === Experience / Timeline === */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+
+        .timeline::after {
+            content: ''; position: absolute; width: 3px;
+            background-image: var(--gradient);
+            top: 0; bottom: 0; left: 50%; margin-left: -1.5px;
+        }
+
+        .timeline-item { padding: 10px 40px; position: relative; width: 50%; }
+        .timeline-item.left { left: 0; text-align: right; }
+        .timeline-item.right { left: 50%; text-align: left; }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: var(--surface-color);
+            position: relative; border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-content h3 { font-size: 1.2rem; color: var(--primary-color); }
+
+        .timeline-content .date {
+            font-size: 0.8rem; font-weight: 300;
+            color: var(--text-secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-year { position: absolute; top: 15px; margin: 0; transform: none; }
+        .timeline-item.left .timeline-year { right: -90px; text-align: left; }
+        .timeline-item.right .timeline-year { left: -90px; text-align: right; }
+        .timeline .timeline-item:first-of-type.left .timeline-year { right: -120px; }
+        .timeline .timeline-item:nth-of-type(2).right .timeline-year { left: -120px; }
+        .timeline .timeline-item:nth-of-type(3).left .timeline-year { right: -120px; }
+
+        .timeline-year span {
+            display: inline-block; padding: 2px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            background: var(--bg-color);
+            color: var(--text-secondary-color);
+            font-weight: 600; font-size: 0.85rem;
+        }
+
+        /* === Contact === */
+        #contact .container { text-align: center; }
+        #contact p { max-width: 560px; margin: 0 auto 2.5rem; }
+        .contact-links { display: flex; justify-content: center; gap: 2rem; }
+        .contact-links a { color: var(--text-color); transition: all 0.3s ease-out; }
+        .contact-links a:hover { color: var(--primary-color); transform: translateY(-5px); }
+        .contact-links svg { width: 32px; height: 32px; fill: currentColor; }
+
+        /* === Privacy Section === */
+        #privacy {
+            padding: 1.5rem 0;
+            border-bottom: none;
+        }
+
+        #privacy details {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+        }
+
+        #privacy summary {
+            cursor: pointer;
+            font-size: 0.82rem;
+            color: var(--text-secondary-color);
+            font-weight: 600;
+            list-style: none;
+            user-select: none;
+        }
+
+        #privacy summary::-webkit-details-marker { display: none; }
+        #privacy summary::before { content: '+ '; }
+        #privacy details[open] summary::before { content: '− '; }
+        #privacy details[open] summary { margin-bottom: 0.75rem; }
+
+        #privacy details p {
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: var(--text-secondary-color);
+        }
+
+        /* === Footer === */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary-color);
+        }
+
+        /* === Responsive === */
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+
+            .main-header {
+                flex-direction: column; align-items: center;
+                justify-content: center; gap: 0.75rem;
+                padding: 0.75rem 0.75rem 1rem;
+            }
+
+            .lang-switch { position: static; transform: none; width: 100%; justify-content: center; }
+            .main-nav ul { flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.25rem; }
+            .main-nav ul li { margin: 0; }
+            .main-nav ul li a { font-size: 0.75rem; letter-spacing: 0.5px; }
+            #hero .subtitle { font-size: 1rem; height: 1.5rem; }
+            #hero { padding-top: 4.5rem; }
+            html { scroll-padding-top: 128px; }
+
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item.left, .timeline-item.right { left: 0%; text-align: left; }
+            .timeline-item .timeline-year { position: static; margin: 0 0 0.75rem 0; text-align: left; }
+        }
+    </style>
 </head>
 
 <body>
-  <iframe id="frame" src="content.html" title="Florian Bujupi Portfolio"></iframe>
+    <canvas id="particle-canvas"></canvas>
 
-  <script>
-    // Cosmetic only: keep browser tab title in sync with iframe title (share previews ignore JS)
-    window.addEventListener('load', () => {
-      const frame = document.getElementById('frame');
-      frame.addEventListener('load', () => {
-        try {
-          const t = frame.contentDocument && frame.contentDocument.title;
-          if (t) document.title = t;
-        } catch (_) { /* ignore */ }
-      });
-    });
-  </script>
+    <header class="main-header">
+        <div class="lang-switch" aria-label="Language switch">
+            <button type="button" class="lang-btn" data-lang="de">DE</button>
+            <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+                <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+                <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section id="hero">
+            <div class="container reveal-on-scroll is-visible">
+                <h1>Florian Bujupi</h1>
+                <p class="subtitle">
+                    <span id="typing-effect"></span>
+                    <span class="typing-cursor"></span>
+                </p>
+                <p class="intro" data-i18n="hero.intro">State-certified Technical Assistant for Informatics (08/2025) focused on IT support, systems, automation (Python), APIs and data.
+Hands-on, structured, and shipping real tools.</p>
+                <a href="#projects" class="cta-button" data-i18n="hero.cta">View Projects</a>
+                <div class="hero-social">
+                    <a href="https://github.com/Bua9595" target="_blank" rel="noopener noreferrer"
+                       aria-label="GitHub" title="GitHub" data-umami-event="github_click">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/florian-bujupi/" target="_blank" rel="noopener noreferrer"
+                       aria-label="LinkedIn" title="LinkedIn" data-umami-event="linkedin_click">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="reveal-on-scroll">
+            <div class="container">
+                <h2 data-i18n="section.projects">Projects</h2>
+                <div class="projects-grid">
+
+                    <!-- BuasBandaiShop -->
+                    <a class="project-card project-link"
+                       href="https://bua9595.github.io/BuasBandaiShop/index.html"
+                       data-umami-event="project_click" data-umami-event-project="BuasBandaiShop">
+                        <img class="project-thumb" src="img/BuasBandaiShop.png"
+                             alt="Screenshot BuasBandaiShop – statischer Web-Store für One Piece TCG Karten"
+                             loading="lazy" />
+                        <div class="project-card-content">
+                            <h3 data-i18n="proj.shop.title">BuasBandaiShop</h3>
+                            <p data-i18n="proj.shop.desc">Statischer Web-Store für One Piece TCG mit strukturierter Produktliste, sauberem UI und direktem GitHub Pages Deploy.</p>
+                            <div class="project-stack">
+                                <span class="stack-tag">HTML</span>
+                                <span class="stack-tag">CSS</span>
+                                <span class="stack-tag">JavaScript</span>
+                                <span class="stack-tag">GitHub Pages</span>
+                            </div>
+                            <span class="project-cta-label" data-i18n="proj.cta.live">Live Demo →</span>
+                        </div>
+                    </a>
+
+                    <!-- Bewerbungsagent -->
+                    <a class="project-card project-link"
+                       href="https://github.com/Bua9595/Bewerbungsagent"
+                       target="_blank" rel="noopener noreferrer"
+                       data-umami-event="project_click" data-umami-event-project="Bewerbungsagent">
+                        <img class="project-thumb" src="img/Bewerbungsagent.png"
+                             alt="Screenshot Bewerbungsagent – Python-Automatisierungstool für Stellenangebote"
+                             loading="lazy" />
+                        <div class="project-card-content">
+                            <h3 data-i18n="proj.agent.title">Bewerbungsagent</h3>
+                            <p data-i18n="proj.agent.desc">Python-Tool das Stellenanzeigen aus mehreren Quellen sammelt, filtert und strukturiert — demonstriert API-Anbindung, Datenparsing und Automatisierungslogik.</p>
+                            <div class="project-stack">
+                                <span class="stack-tag">Python</span>
+                                <span class="stack-tag">Requests</span>
+                                <span class="stack-tag">Parsing</span>
+                                <span class="stack-tag">JSON</span>
+                                <span class="stack-tag">Automation</span>
+                            </div>
+                            <span class="project-cta-label" data-i18n="proj.cta.github">GitHub →</span>
+                        </div>
+                    </a>
+
+                    <!-- Polymarket Script -->
+                    <a class="project-card project-link"
+                       href="https://github.com/Bua9595/Polymarket_Script"
+                       target="_blank" rel="noopener noreferrer"
+                       data-umami-event="project_click" data-umami-event-project="PolymarketScript">
+                        <img class="project-thumb" src="img/Polymarket_Script.png"
+                             alt="Screenshot Polymarket Script – Python-Script für Marktdaten via API"
+                             loading="lazy" />
+                        <div class="project-card-content">
+                            <h3 data-i18n="proj.poly.title">Polymarket Script</h3>
+                            <p data-i18n="proj.poly.desc">Holt Marktdaten via API, normalisiert sie und wertet sie strukturiert aus — Python, REST API, Datenverarbeitung.</p>
+                            <div class="project-stack">
+                                <span class="stack-tag">Python</span>
+                                <span class="stack-tag">APIs</span>
+                                <span class="stack-tag">Data Processing</span>
+                            </div>
+                            <span class="project-cta-label" data-i18n="proj.cta.github">GitHub →</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="reveal-on-scroll">
+            <div class="container">
+                <h2 data-i18n="section.skills">Skills &amp; Stack</h2>
+                <div class="skills-grid">
+
+                    <div class="skill-category">
+                        <h3 data-i18n="skills.cat.automation">Automatisierung &amp; Daten</h3>
+                        <div class="skill-pills">
+                            <div class="skill-pill">Python <span class="level-badge level-practical" data-i18n="level.practical">Praktische Erfahrung</span></div>
+                            <div class="skill-pill">REST APIs <span class="level-badge level-practical" data-i18n="level.practical">Praktische Erfahrung</span></div>
+                            <div class="skill-pill">JSON / Datenverarbeitung <span class="level-badge level-practical" data-i18n="level.practical">Praktische Erfahrung</span></div>
+                            <div class="skill-pill">SQL <span class="level-badge level-solid" data-i18n="level.solid">Solide Grundlagen</span></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 data-i18n="skills.cat.web">Web &amp; Frontend</h3>
+                        <div class="skill-pills">
+                            <div class="skill-pill">HTML / CSS <span class="level-badge level-solid" data-i18n="level.solid">Solide Grundlagen</span></div>
+                            <div class="skill-pill">JavaScript <span class="level-badge level-solid" data-i18n="level.solid">Solide Grundlagen</span></div>
+                            <div class="skill-pill">Git / GitHub <span class="level-badge level-practical" data-i18n="level.practical">Praktische Erfahrung</span></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 data-i18n="skills.cat.tools">Tools &amp; Systeme</h3>
+                        <div class="skill-pills">
+                            <div class="skill-pill">Windows / Linux <span class="level-badge level-solid" data-i18n="level.solid">Solide Grundlagen</span></div>
+                            <div class="skill-pill">Bash / PowerShell <span class="level-badge level-basic" data-i18n="level.basic">Grundkenntnisse</span></div>
+                            <div class="skill-pill">Netzwerktechnik (Cisco) <span class="level-badge level-basic" data-i18n="level.basic">Grundkenntnisse</span></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 data-i18n="skills.cat.itsupport">IT-Support &amp; Infrastruktur</h3>
+                        <div class="skill-pills">
+                            <div class="skill-pill">IT-Support &amp; Troubleshooting <span class="level-badge level-solid" data-i18n="level.solid">Solide Grundlagen</span></div>
+                            <div class="skill-pill">Client- &amp; Systemumgebungen <span class="level-badge level-solid" data-i18n="level.solid">Solide Grundlagen</span></div>
+                            <div class="skill-pill">AI / LLM-Workflows <span class="level-badge level-practical" data-i18n="level.practical">Praktische Erfahrung</span></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 data-i18n="skills.cat.process">Prozess &amp; Arbeitsweise</h3>
+                        <div class="skill-pills">
+                            <div class="skill-pill">Strukturierte Problemlösung <span class="level-badge level-practical" data-i18n="level.practical">Praktische Erfahrung</span></div>
+                            <div class="skill-pill">Prozessdisziplin &amp; Zuverlässigkeit <span class="level-badge level-practical" data-i18n="level.practical">Praktische Erfahrung</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="reveal-on-scroll">
+            <div class="container">
+                <h2 data-i18n="section.experience">Experience &amp; Education</h2>
+                <div class="timeline">
+
+                    <div class="timeline-item left reveal-on-scroll" data-year="2025–2026">
+                        <div class="timeline-content">
+                            <h3 data-i18n="exp.builder.title">Independent Builder (IT &amp; Automation)</h3>
+                            <p class="date" data-i18n="label.present">Present</p>
+                            <p data-i18n="exp.builder.desc">Building and improving practical tools (automation, APIs, small web projects) to sharpen IT and engineering skills.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item right reveal-on-scroll" data-year="2023–2025">
+                        <div class="timeline-content">
+                            <h3 data-i18n="exp.edu.title">State-Certified Technical Assistant for Informatics</h3>
+                            <p class="date" data-i18n="label.country.de">Germany</p>
+                            <p data-i18n="exp.edu.desc">Intensive training in software development, system administration and network engineering as foundation for IT roles.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item left reveal-on-scroll" data-year="2013–2023">
+                        <div class="timeline-content">
+                            <h3 data-i18n="exp.ops.title">Operations &amp; Logistics (Background)</h3>
+                            <p class="date" data-i18n="label.country.de">Germany</p>
+                            <p data-i18n="exp.ops.desc">Developed strong process discipline and reliability in high-throughput environments; transferable to IT operations and support.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="reveal-on-scroll">
+            <div class="container">
+                <h2 data-i18n="section.contact">Get In Touch</h2>
+                <p data-i18n="contact.body">Open to IT support, automation projects and new opportunities. Reach out by mail, GitHub or LinkedIn.</p>
+                <div class="contact-links">
+                    <a href="mailto:bujupi9595@hotmail.de" title="Email" aria-label="Email"
+                       data-umami-event="email_click">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 4.238l-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/Bua9595" target="_blank" rel="noopener noreferrer"
+                       title="GitHub" aria-label="GitHub" data-umami-event="github_click">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <title>GitHub</title>
+                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/florian-bujupi/" target="_blank" rel="noopener noreferrer"
+                       title="LinkedIn" aria-label="LinkedIn" data-umami-event="linkedin_click">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Privacy Notice -->
+    <section id="privacy">
+        <div class="container">
+            <details>
+                <summary data-i18n="privacy.summary">Datenschutzhinweise</summary>
+                <p data-i18n="privacy.text">Diese Website verwendet Umami Analytics — ein cookiefreies, datenschutzkonformes Analysetool. Es werden keine personenbezogenen Daten gespeichert und keine Tracking-Cookies gesetzt. Erfasst werden anonymisierte Seitenaufrufe und Klicks auf öffentliche Links (GitHub, LinkedIn, Projekte). Kein Drittanbieter-Profiling. Kontakt: bujupi9595@hotmail.de</p>
+            </details>
+        </div>
+    </section>
+
+    <footer>
+        <p data-i18n="footer.text">Built by Florian Bujupi | © 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Particle Background ---
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let particlesArray;
+
+            class Particle {
+                constructor(x, y, directionX, directionY, size) {
+                    this.x = x; this.y = y;
+                    this.directionX = directionX; this.directionY = directionY;
+                    this.size = size;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+                    ctx.fill();
+                }
+                update() {
+                    if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                    if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+                    this.draw();
+                }
+            }
+
+            function initParticles() {
+                particlesArray = [];
+                const n = (canvas.height * canvas.width) / 9000;
+                for (let i = 0; i < n; i++) {
+                    const size = (Math.random() * 1.5) + 1;
+                    const x = Math.random() * (canvas.width - size * 4) + size * 2;
+                    const y = Math.random() * (canvas.height - size * 4) + size * 2;
+                    const dx = (Math.random() * 0.4) - 0.2;
+                    const dy = (Math.random() * 0.4) - 0.2;
+                    particlesArray.push(new Particle(x, y, dx, dy, size));
+                }
+            }
+
+            function connectParticles() {
+                for (let a = 0; a < particlesArray.length; a++) {
+                    for (let b = a; b < particlesArray.length; b++) {
+                        const dx = particlesArray[a].x - particlesArray[b].x;
+                        const dy = particlesArray[a].y - particlesArray[b].y;
+                        const distance = dx * dx + dy * dy;
+                        if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                            const opacity = 1 - (distance / 20000);
+                            ctx.strokeStyle = `rgba(200, 50, 50, ${opacity})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animateParticles() {
+                requestAnimationFrame(animateParticles);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particlesArray.length; i++) particlesArray[i].update();
+                connectParticles();
+            }
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                initParticles();
+            });
+
+            initParticles();
+            animateParticles();
+
+            // --- I18N ---
+            const I18N = {
+                en: {
+                    'nav.projects': 'Projects',
+                    'nav.skills': 'Skills',
+                    'nav.experience': 'Experience',
+                    'nav.contact': 'Contact',
+
+                    'hero.cta': 'View Projects',
+                    'hero.intro': 'State-certified Technical Assistant for Informatics (08/2025) focused on IT support, systems, automation (Python), APIs and data.\nHands-on, structured, and shipping real tools.',
+
+                    'section.projects': 'Projects',
+                    'section.skills': 'Skills & Stack',
+                    'section.experience': 'Experience & Education',
+                    'section.contact': 'Get In Touch',
+
+                    'skills.cat.automation': 'Automation & Data',
+                    'skills.cat.web': 'Web & Frontend',
+                    'skills.cat.tools': 'Tools & Systems',
+                    'skills.cat.itsupport': 'IT Support & Infrastructure',
+                    'skills.cat.process': 'Process & Approach',
+
+                    'level.practical': 'Hands-on',
+                    'level.solid': 'Solid Foundation',
+                    'level.basic': 'Basic Knowledge',
+
+                    'proj.shop.title': 'BuasBandaiShop',
+                    'proj.shop.desc': 'Static web store for One Piece TCG cards with structured product listings, clean UI and direct GitHub Pages deploy.',
+                    'proj.agent.title': 'Bewerbungsagent',
+                    'proj.agent.desc': 'Python tool that collects, filters and structures job postings from multiple sources — demonstrates API integration, data parsing and automation logic.',
+                    'proj.poly.title': 'Polymarket Script',
+                    'proj.poly.desc': 'Fetches market data via API, normalizes it and evaluates it in a structured way — Python, REST API, data processing.',
+                    'proj.cta.live': 'Live Demo →',
+                    'proj.cta.github': 'GitHub →',
+
+                    'label.present': 'Present',
+                    'label.country.de': 'Germany',
+
+                    'exp.builder.title': 'Independent Builder (IT & Automation)',
+                    'exp.builder.desc': 'Building and improving practical tools (automation, APIs, small web projects) to sharpen IT and engineering skills.',
+                    'exp.edu.title': 'State-Certified Technical Assistant for Informatics',
+                    'exp.edu.desc': 'Intensive training in software development, system administration and network engineering as foundation for IT roles.',
+                    'exp.ops.title': 'Operations & Logistics (Background)',
+                    'exp.ops.desc': 'Developed strong process discipline and reliability in high-throughput environments; transferable to IT operations and support.',
+
+                    'contact.body': 'Open to IT support, automation projects and new opportunities. Reach out by mail, GitHub or LinkedIn.',
+
+                    'privacy.summary': 'Privacy Notice',
+                    'privacy.text': 'This website uses Umami Analytics — a cookie-free, privacy-compliant analytics tool. No personal data is stored and no tracking cookies are set. Only anonymized page views and clicks on public links (GitHub, LinkedIn, projects) are recorded. No third-party profiling. Contact: bujupi9595@hotmail.de',
+
+                    'footer.text': 'Built by Florian Bujupi | © 2025'
+                },
+
+                de: {
+                    'nav.projects': 'Projekte',
+                    'nav.skills': 'Skills',
+                    'nav.experience': 'Lebenslauf',
+                    'nav.contact': 'Kontakt',
+
+                    'hero.cta': 'Projekte ansehen',
+                    'hero.intro': 'Staatlich geprüfter Technischer Assistent für Informatik (08/2025) mit Fokus auf IT-Support, Systeme, Automatisierung (Python), APIs und Daten.\nPraxisnah, strukturiert, und mit echten Tools.',
+
+                    'section.projects': 'Projekte',
+                    'section.skills': 'Skills & Stack',
+                    'section.experience': 'Erfahrung & Ausbildung',
+                    'section.contact': 'Kontakt aufnehmen',
+
+                    'skills.cat.automation': 'Automatisierung & Daten',
+                    'skills.cat.web': 'Web & Frontend',
+                    'skills.cat.tools': 'Tools & Systeme',
+                    'skills.cat.itsupport': 'IT-Support & Infrastruktur',
+                    'skills.cat.process': 'Prozess & Arbeitsweise',
+
+                    'level.practical': 'Praktische Erfahrung',
+                    'level.solid': 'Solide Grundlagen',
+                    'level.basic': 'Grundkenntnisse',
+
+                    'proj.shop.title': 'BuasBandaiShop',
+                    'proj.shop.desc': 'Statischer Web-Store für One Piece TCG mit strukturierter Produktliste, sauberem UI und direktem GitHub Pages Deploy.',
+                    'proj.agent.title': 'Bewerbungsagent',
+                    'proj.agent.desc': 'Python-Tool das Stellenanzeigen aus mehreren Quellen sammelt, filtert und strukturiert — demonstriert API-Anbindung, Datenparsing und Automatisierungslogik.',
+                    'proj.poly.title': 'Polymarket Script',
+                    'proj.poly.desc': 'Holt Marktdaten via API, normalisiert sie und wertet sie strukturiert aus — Python, REST API, Datenverarbeitung.',
+                    'proj.cta.live': 'Live Demo →',
+                    'proj.cta.github': 'GitHub →',
+
+                    'label.present': 'Aktuell',
+                    'label.country.de': 'Deutschland',
+
+                    'exp.builder.title': 'Selbstständiger Builder (IT & Automatisierung)',
+                    'exp.builder.desc': 'Entwicklung und Verbesserung praktischer Tools (Automatisierung, APIs, kleine Web-Projekte), um IT-Skills messbar zu steigern.',
+                    'exp.edu.title': 'Staatlich geprüfter Technischer Assistent für Informatik',
+                    'exp.edu.desc': 'Intensive Ausbildung in Softwareentwicklung, Systemadministration und Netzwerktechnik als Basis für IT-Rollen.',
+                    'exp.ops.title': 'Operations & Logistik (Background)',
+                    'exp.ops.desc': 'Hohe Prozessdisziplin und Zuverlässigkeit in stark getakteten Umgebungen – übertragbar auf IT-Betrieb und Support.',
+
+                    'contact.body': 'Offen für IT-Support, Automatisierungsprojekte und neue Möglichkeiten. Meld dich gerne per Mail, GitHub oder LinkedIn.',
+
+                    'privacy.summary': 'Datenschutzhinweise',
+                    'privacy.text': 'Diese Website verwendet Umami Analytics — ein cookiefreies, datenschutzkonformes Analysetool. Es werden keine personenbezogenen Daten gespeichert und keine Tracking-Cookies gesetzt. Erfasst werden anonymisierte Seitenaufrufe und Klicks auf öffentliche Links (GitHub, LinkedIn, Projekte). Kein Drittanbieter-Profiling. Kontakt: bujupi9595@hotmail.de',
+
+                    'footer.text': 'Erstellt von Florian Bujupi | © 2025'
+                }
+            };
+
+            const TITLES_BY_LANG = {
+                en: ['IT Support & Systems', 'Python Automation', 'APIs & Data'],
+                de: ['IT-Support & Systeme', 'Python-Automatisierung', 'APIs & Daten']
+            };
+
+            const LS_LANG_KEY = 'site_lang';
+
+            const typingElement = document.getElementById('typing-effect');
+            let titles = TITLES_BY_LANG.en;
+            let titleIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingTimer = null;
+
+            function type() {
+                const currentTitle = titles[titleIndex] || '';
+                if (isDeleting) {
+                    typingElement.textContent = currentTitle.substring(0, charIndex--);
+                } else {
+                    typingElement.textContent = currentTitle.substring(0, charIndex++);
+                }
+                let speed = isDeleting ? 75 : 150;
+                if (!isDeleting && charIndex === currentTitle.length) {
+                    speed = 1500; isDeleting = true;
+                } else if (isDeleting && charIndex <= 0) {
+                    isDeleting = false;
+                    titleIndex = (titleIndex + 1) % titles.length;
+                    speed = 400;
+                }
+                typingTimer = setTimeout(type, speed);
+            }
+
+            function restartTyping(lang) {
+                if (typingTimer) clearTimeout(typingTimer);
+                titles = TITLES_BY_LANG[lang] || TITLES_BY_LANG.en;
+                titleIndex = 0; charIndex = 0; isDeleting = false;
+                type();
+            }
+
+            function getInitialLang() {
+                try {
+                    const saved = localStorage.getItem(LS_LANG_KEY);
+                    if (saved && I18N[saved]) return saved;
+                } catch (_) {}
+                const htmlLang = document.documentElement.lang;
+                return I18N[htmlLang] ? htmlLang : 'en';
+            }
+
+            function applyLanguage(lang) {
+                const dict = I18N[lang] || I18N.en;
+                document.documentElement.setAttribute('lang', lang);
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (dict[key] !== undefined) el.textContent = dict[key];
+                });
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+                try { localStorage.setItem(LS_LANG_KEY, lang); } catch (_) {}
+                restartTyping(lang);
+            }
+
+            const initialLang = getInitialLang();
+            applyLanguage(initialLang);
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+            });
+
+            // --- Timeline Year Markers ---
+            function insertTimelineYears() {
+                const timeline = document.querySelector('.timeline');
+                if (!timeline) return;
+                timeline.querySelectorAll('.timeline-year').forEach(n => n.remove());
+                let last = null;
+                timeline.querySelectorAll('.timeline-item').forEach(item => {
+                    const label = item.getAttribute('data-year');
+                    if (!label || label === last) return;
+                    const marker = document.createElement('div');
+                    marker.className = 'timeline-year reveal-on-scroll';
+                    const pill = document.createElement('span');
+                    pill.textContent = label;
+                    marker.appendChild(pill);
+                    const content = item.querySelector('.timeline-content');
+                    if (content) item.insertBefore(marker, content);
+                    else item.appendChild(marker);
+                    last = label;
+                });
+            }
+            insertTimelineYears();
+
+            // --- Scroll Reveal ---
+            const scrollObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -100px 0px' });
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => scrollObserver.observe(el));
+
+            // --- Anchor scroll offset ---
+            const header = document.querySelector('.main-header');
+            function scrollToAnchor(hash) {
+                const target = document.querySelector(hash);
+                if (!target) return;
+                const headerHeight = header ? header.offsetHeight : 0;
+                const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 12;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', event => {
+                    const href = link.getAttribute('href');
+                    if (!href || href === '#') return;
+                    if (!document.querySelector(href)) return;
+                    event.preventDefault();
+                    scrollToAnchor(href);
+                });
+            });
+
+            // --- Hide header on scroll down ---
+            let lastScrollY = window.pageYOffset;
+            window.addEventListener('scroll', () => {
+                if (!header) return;
+                if (lastScrollY < window.pageYOffset) header.style.top = '-80px';
+                else header.style.top = '0';
+                lastScrollY = window.pageYOffset;
+            });
+
+        });
+    </script>
 </body>
 
 </html>
